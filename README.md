@@ -5,7 +5,7 @@ Fonctionnalités :
 • Compteur de pokémons sauvages rencontrés.  
 • Afficher/Masquer l'overlay avec la touche "L" par défaut (configurable).  
 • Panel de configuration avec la touche "K" par défaut (configurable).  
-• Ajouter le nom d'un pokémon spécifique pour que son compteur soit affiché à la place du compteur total (attention à respecter les accents et mettre le nom français).  
+• Ajouter le nom d'un pokémon spécifique pour que son compteur soit affiché à la place du compteur total (attention à respecter les accents).  
 • Modifier la taille de l'overlay, la couleur, l'ombre, la position.  
 • Sauvegarde les paramètres pour le prochain lancement du jeu.  
 • Reprend le compteur des sessions précédentes jusqu'à ce que le joueur utilise le :  
