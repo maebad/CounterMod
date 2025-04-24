@@ -11,4 +11,5 @@ Fonctionnalités :
 • Reprend le compteur des sessions précédentes jusqu'à ce que le joueur utilise le :  
 • Bouton pour reset le compteur.  
 • Une commande "/resetcount" pour remettre à zéro le compteur sans passer par l'interface.  
-• Une commande "/count" pour revenir au compteur total, ou "/count nomdupokémon" pour passer au compteur d'un pokémon spécifique, sans passer par l'interface d'options (attention à respecter les accents).
+• Une commande "/count" pour revenir au compteur total, ou "/count nomdupokémon" pour passer au compteur d'un pokémon spécifique, sans passer par l'interface d'options (attention à respecter les accents).  
+• Prise en charge des noms de pokémons en accord avec la langue du client Minecraft.
