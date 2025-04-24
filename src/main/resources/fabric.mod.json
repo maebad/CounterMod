@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "countermod",
+  "version": "1.0.0",
+  "name": "CounterMod",
+  "description": "Compteur de pok\u00e9mons sauvages rencontr\u00e9s",
+  "authors": [
+    "Toi"
+  ],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "counter.RencontresMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.21",
+    "fabric": "*",
+    "minecraft": "1.21.1"
+  }
+}

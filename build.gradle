@@ -1,0 +1,26 @@
+plugins {
+    id 'fabric-loom' version '1.2.7'
+    id 'maven-publish'
+}
+
+group = 'counter'
+version = '1.1.5'
+archivesBaseName = 'CounterModFR'
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft 'com.mojang:minecraft:1.21.1'
+    mappings loom.officialMojangMappings()
+    modImplementation 'net.fabricmc:fabric-loader:0.15.1'
+    modImplementation 'net.fabricmc.fabric-api:fabric-api:0.115.5+1.21.1'
+    modCompileOnly files("libs/Cobblemon-fabric-1.6.1+1.21.1.jar")
+    modRuntimeOnly files("libs/Cobblemon-fabric-1.6.1+1.21.1.jar")
+}
+
+loom {
+    splitEnvironmentSourceSets()
+}
