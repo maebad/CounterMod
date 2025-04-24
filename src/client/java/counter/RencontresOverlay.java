@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.Minecraft;
 import java.awt.Color;
+import java.util.Locale;
 
 public class RencontresOverlay {
     private static float opacity = 0f;
@@ -11,8 +12,8 @@ public class RencontresOverlay {
 
     public static void init() {
         HudRenderCallback.EVENT.register((graphics, tickDelta) -> {
-            // Reload config each frame
-            ConfigHolder.loadConfig();
+            // Ne plus recharger la config chaque frame pour ne pas écraser overlayVisible
+            // ConfigHolder.loadConfig();
 
             // Fade logic
             if (ConfigHolder.overlayVisible && opacity < 1f) {
@@ -35,8 +36,7 @@ public class RencontresOverlay {
             pose.translate(0, 0, 200);
             pose.scale((float) scale, (float) scale, 1f);
 
-            int x, y;
-            // Determine starting Y based on vertical alignment
+            int x = 5, y;
             int totalLines = ConfigHolder.showTotal ? 1 : 0;
             for (String sp : ConfigHolder.trackedSpecies) {
                 if (sp != null && !sp.isEmpty()) totalLines++;
@@ -50,7 +50,6 @@ public class RencontresOverlay {
                 default -> y = 5;
             }
 
-            // Draw the lines
             if (ConfigHolder.showTotal) {
                 String text = "Rencontres totales : " + RencontresTracker.total;
                 int textW = font.width(text);
@@ -66,32 +65,32 @@ public class RencontresOverlay {
                     colorBase.getRed(), colorBase.getGreen(), colorBase.getBlue(),
                     (int)(ConfigHolder.textOpacity * opacity * 255)
                 );
-                graphics.drawString(font, text, x+1, y+1, shadow.getRGB(), false);
+                graphics.drawString(font, text, x + 1, y + 1, shadow.getRGB(), false);
                 graphics.drawString(font, text, x, y, textColor.getRGB(), false);
                 y += font.lineHeight + 2;
             }
 
+            // Affichage des 4 compteurs spécifiques avec majuscule et préfixe
             for (String sp : ConfigHolder.trackedSpecies) {
-                if (sp != null && !sp.isEmpty()) {
-                    String disp = sp.substring(0,1).toUpperCase() + sp.substring(1);
-                    String text = "Rencontres " + disp + " : " + RencontresTracker.getCount(sp);
-                    int textW = font.width(text);
-                    switch (ConfigHolder.horizontalAlign) {
-                        case LEFT -> x = 5;
-                        case CENTER -> x = (uw - textW) / 2;
-                        case RIGHT -> x = uw - textW - 5;
-                        default -> x = 5;
-                    }
-                    Color shadow = new Color(0, 0, 0, (int)(ConfigHolder.shadowOpacity * opacity * 255));
-                    Color colorBase = Color.decode(ConfigHolder.textColor);
-                    Color textColor = new Color(
-                        colorBase.getRed(), colorBase.getGreen(), colorBase.getBlue(),
-                        (int)(ConfigHolder.textOpacity * opacity * 255)
-                    );
-                    graphics.drawString(font, text, x+1, y+1, shadow.getRGB(), false);
-                    graphics.drawString(font, text, x, y, textColor.getRGB(), false);
-                    y += font.lineHeight + 2;
+                if (sp == null || sp.isEmpty()) continue;
+                String displayName = sp.substring(0, 1).toUpperCase(Locale.ROOT) + sp.substring(1);
+                String text = "Rencontres " + displayName + " : " + RencontresTracker.getCount(sp);
+                int textW = font.width(text);
+                switch (ConfigHolder.horizontalAlign) {
+                    case LEFT -> x = 5;
+                    case CENTER -> x = (uw - textW) / 2;
+                    case RIGHT -> x = uw - textW - 5;
+                    default -> x = 5;
                 }
+                Color shadow = new Color(0, 0, 0, (int)(ConfigHolder.shadowOpacity * opacity * 255));
+                Color colorBase = Color.decode(ConfigHolder.textColor);
+                Color textColor = new Color(
+                    colorBase.getRed(), colorBase.getGreen(), colorBase.getBlue(),
+                    (int)(ConfigHolder.textOpacity * opacity * 255)
+                );
+                graphics.drawString(font, text, x + 1, y + 1, shadow.getRGB(), false);
+                graphics.drawString(font, text, x, y, textColor.getRGB(), false);
+                y += font.lineHeight + 2;
             }
 
             pose.popPose();
