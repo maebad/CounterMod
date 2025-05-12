@@ -10,6 +10,11 @@ Fonctionnalités :
 • Sauvegarde les paramètres pour le prochain lancement du jeu.  
 • Reprend le compteur des sessions précédentes jusqu'à ce que le joueur utilise le :  
 • Bouton pour reset le compteur.  
-• Une commande "/resetcount" pour remettre à zéro le compteur sans passer par l'interface.  
 • Une commande "/count" pour revenir au compteur total, ou "/count nomdupokémon" pour passer au compteur d'un pokémon spécifique, sans passer par l'interface d'options (attention à respecter les accents).  
 • Prise en charge des noms de pokémons en accord avec la langue du client Minecraft.
+• Ajout d'un bouton Reset qui ouvre un autre GUI avec 3 boutons :
+- Reset all (Reset du compteur au total incluant les espèces)
+- Reset total (Ne reset que le total de pokémons rencontrés, pas les espèces)
+- Reset Pokémon (ouvre un champ de texte pour spécifier un nom de pokémon et reset son compteur uniquement)
+
+Les commandes /resetall, /resettotal et /resetcount nomdupokémon fonctionnent de la même manière.
