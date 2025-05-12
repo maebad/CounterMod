@@ -1,9 +1,9 @@
 pluginManagement {
     repositories {
+        // d’abord le Plugin Portal, puis le repo Fabric, enfin Maven Central
         gradlePluginPortal()
-        maven { url 'https://maven.fabricmc.net/' }
+        maven { url = "https://maven.fabricmc.net/" }
         mavenCentral()
     }
 }
-
-rootProject.name = 'CounterModFR'
+rootProject.name = "CounterMod-main"

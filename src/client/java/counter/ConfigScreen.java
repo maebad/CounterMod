@@ -89,7 +89,6 @@ public class ConfigScreen extends Screen {
         // petit espace
         y += spacing;
 
-        // enregistrer specTitleY ici (juste avant + boutons)
         specTitleY = y;
         y += spacing / 2;
 
@@ -115,10 +114,10 @@ public class ConfigScreen extends Screen {
             }).bounds(cx-100, y,200,20).build());
         y += spacing;
 
-        // Réinitialiser le compteur
+        // Ouvre le menu de choix de reset
         addRenderableWidget(Button.builder(
-            Component.literal("Réinitialiser le compteur"),
-            b -> RencontresTracker.reset()
+            Component.literal("Reset"),
+            b -> Minecraft.getInstance().setScreen(new ResetSelectionScreen())
         ).bounds(cx-100, y,200,20).build());
         y += spacing;
 

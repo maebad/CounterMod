@@ -47,6 +47,25 @@ public class RencontresTracker {
         saveCounts();
     }
 
+    /**
+     * Ne réinitialise que le compteur total (le nombre de rencontres),
+     * sans toucher aux compteurs par espèce.
+     */
+    public static void resetTotal() {
+        total = 0;
+        saveCounts();
+    }
+
+    /**
+     * Réinitialise le compteur d'une seule espèce (met à zéro),
+     * sans toucher aux autres espèces ni au total.
+     */
+    public static void resetSpecies(String speciesName) {
+        // on stocke toujours les clés en lowercase
+        speciesCounts.remove(speciesName.toLowerCase(Locale.ROOT));
+        saveCounts();
+    }
+
     public static int getCount(String name) {
         return speciesCounts.getOrDefault(name.toLowerCase(Locale.ROOT), 0);
     }

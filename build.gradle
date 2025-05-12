@@ -1,10 +1,10 @@
 plugins {
-    id 'fabric-loom' version '1.2.7'
+    id "fabric-loom" version "1.9.2"
     id 'maven-publish'
 }
 
 group = 'counter'
-version = '1.2.1'
+version = '1.2.3'
 archivesBaseName = 'CounterModFR'
 
 repositories {
