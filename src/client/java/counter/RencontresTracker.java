@@ -20,7 +20,7 @@ import java.util.UUID;
 public class RencontresTracker {
     public static int total = 0;
     public static Map<String, Integer> speciesCounts = new HashMap<>();
-    private static final Set<java.util.UUID> seen = new HashSet<>();
+    private static final Set<UUID> seen = new HashSet<>();
     private static final Gson GSON = new Gson();
     private static final Path SAVE_FILE =
         FabricLoader.getInstance().getConfigDir().resolve("countermod_counts.json");
@@ -37,7 +37,7 @@ public static void init() {
             return;
         }
 
-        if (p.getOwnerUUID() == null && seen.add(p.getPokemon().getUuid())) {
+        if (p.getOwnerUUID() == null && seen.add(p.getUUID())) {
             total++;
             String name = p.getName().getString().toLowerCase(Locale.ROOT);
             speciesCounts.put(name, speciesCounts.getOrDefault(name, 0) + 1);
