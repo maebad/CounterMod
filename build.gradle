@@ -4,8 +4,8 @@ plugins {
 }
 
 group = 'counter'
-version = '1.2.3'
-archivesBaseName = 'CounterModFR'
+version = 'Tropimon'
+archivesBaseName = 'Counter'
 
 repositories {
     mavenCentral()

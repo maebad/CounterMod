@@ -20,25 +20,31 @@ import java.util.UUID;
 public class RencontresTracker {
     public static int total = 0;
     public static Map<String, Integer> speciesCounts = new HashMap<>();
-    private static final Set<UUID> seen = new HashSet<>();
+    private static final Set<java.util.UUID> seen = new HashSet<>();
     private static final Gson GSON = new Gson();
     private static final Path SAVE_FILE =
         FabricLoader.getInstance().getConfigDir().resolve("countermod_counts.json");
 
-    public static void init() {
-        loadCounts();
-        // Only count on entity load; do not remove on unload to keep cumulative counts
-        ClientEntityEvents.ENTITY_LOAD.register((entity, world) -> {
-            if (!(entity instanceof PokemonEntity)) return;
-            PokemonEntity p = (PokemonEntity) entity;
-            if (p.getOwnerUUID() == null && seen.add(p.getUUID())) {
-                total++;
-                String name = p.getName().getString().toLowerCase(Locale.ROOT);
-                speciesCounts.put(name, speciesCounts.getOrDefault(name, 0) + 1);
-                saveCounts();
-            }
-        });
-    }
+public static void init() {
+    loadCounts();
+    // Only count on entity load; do not remove on unload to keep cumulative counts
+    ClientEntityEvents.ENTITY_LOAD.register((entity, world) -> {
+        if (!(entity instanceof PokemonEntity)) return;
+        PokemonEntity p = (PokemonEntity) entity;
+
+        // Ignorer les Pokémon sauvages niveau 100 (boss event)
+        if (p.getPokemon().getLevel() == 100 && p.getOwnerUUID() == null) {
+            return;
+        }
+
+        if (p.getOwnerUUID() == null && seen.add(p.getPokemon().getUuid())) {
+            total++;
+            String name = p.getName().getString().toLowerCase(Locale.ROOT);
+            speciesCounts.put(name, speciesCounts.getOrDefault(name, 0) + 1);
+            saveCounts();
+        }
+    });
+}
 
     public static void reset() {
         seen.clear();
