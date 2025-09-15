@@ -8,7 +8,7 @@ Fonctionnalités :
 • Ajouter le nom d'un pokémon spécifique pour que son compteur soit affiché à la place du compteur total (attention à respecter les accents).  
 • Modifier la taille de l'overlay, la couleur, l'ombre, la position.  
 • Sauvegarde les paramètres pour le prochain lancement du jeu.  
-• Reprend le compteur des sessions précédentes (sauf si reset)
+• Reprend le compteur des sessions précédentes (sauf si reset)  
 • Bouton Reset qui ouvre un autre GUI avec 3 boutons :
 - Reset all (Reset du compteur au total incluant les espèces)
 - Reset total (Ne reset que le total de pokémons rencontrés, pas les espèces)
