@@ -13,7 +13,8 @@ Fonctionnalités :
 - Reset all (Reset du compteur au total incluant les espèces)
 - Reset total (Ne reset que le total de pokémons rencontrés, pas les espèces)
 - Reset Pokémon (ouvre un champ de texte pour spécifier un nom de pokémon et reset son compteur uniquement)
-• Une commande "/count" pour revenir au compteur total, ou "/count nomdupokémon" pour passer au compteur d'un pokémon spécifique, sans passer par l'interface d'options (attention à respecter les accents).  
+• Une commande "/count" pour revenir au compteur total, ou "/count nomdupokémon" pour passer au compteur d'un pokémon spécifique, sans passer par l'interface d'options (attention à respecter les accents).    
+
 • Prise en charge des noms de pokémons en accord avec la langue du client Minecraft.  
 
 Les commandes /resetall, /resettotal et /resetcount nomdupokémon fonctionnent de la même manière.
