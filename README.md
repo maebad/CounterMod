@@ -1,5 +1,5 @@
 ﻿# CounterMod  
-Un mod compteur pour Cobblemon 1.6.1 Fabric 1.21.1 qui enregistre les spawns autour de l'utilisateur global et par espèces.  
+Un mod compteur pour Cobblemon 1.6.1+ Fabric 1.21.1 qui enregistre les spawns autour de l'utilisateur global et par espèces.  
   
 Fonctionnalités :  
 • Compteur de pokémons sauvages rencontrés.  
